@@ -8,22 +8,25 @@ import { selectTokenExpirationTime } from 'redux/stateSlices/auth/Auth.State.Sli
 function AppBarTimer() {
   const [sendLogout] = useSendLogoutMutation();
   const tokenExpirationTime = useSelector(selectTokenExpirationTime);
+
+
+
   const [timeLeft, setTimeLeft] = useState('');
   const isMobile = useMediaQuery('(max-width:600px)');
 
   useLayoutEffect(() => {
-    const updateTimer = async () => {
+            const updateTimer = async () => {
       const now = new Date();
-      const expirationDate = parseISO(tokenExpirationTime ?? '');
+              const expirationDate = parseISO(tokenExpirationTime ?? '');
       if (isAfter(now, expirationDate)) {
-        clearInterval(timerId);
+                 clearInterval(timerId);
         await sendLogout();
         return;
       }
       const duration = intervalToDuration({ start: now, end: expirationDate });
 
       const minutes = duration.minutes?.toString().padStart(2, '0');
-      const seconds = duration.seconds?.toString().padStart(2, '0');
+               const seconds = duration.seconds?.toString().padStart(2, '0');
       const formatted = `${minutes}:${seconds}`;
 
       setTimeLeft(formatted);
