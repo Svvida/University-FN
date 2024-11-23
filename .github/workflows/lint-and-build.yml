@@ -40,7 +40,7 @@ jobs:
           echo "Modified files: $MODIFIED_FILES"
           if [ -n "$MODIFIED_FILES" ]; then
             echo "Running ESLint..."
-            npm run lint $MODIFIED_FILES
+            npm run lint $MODIFIED_FILES --format table
           else
             echo "No modified files to lint"
           fi
