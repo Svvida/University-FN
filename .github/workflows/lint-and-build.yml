@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,10 +35,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Debug branch names
+        run: |
+          echo "Base branch: ${{ github.base_ref }}"
+          echo "Head branch: ${{ github.head_ref }}"
+
       - name: Lint modified files
         run: |
           echo "Identifying modified files..."
-          MODIFIED_FILES=$(git diff --name-only origin/${{ github.base_ref }} ${{ github.head_ref }} -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
+          MODIFIED_FILES=$(git diff --name-only origin/${{ github.base_ref }} origin/${{ github.head_ref }} -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
           echo "Modified files: $MODIFIED_FILES"
           if [ -n "$MODIFIED_FILES" ]; then
             echo "Running ESLint..."
@@ -53,6 +60,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
