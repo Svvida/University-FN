@@ -36,7 +36,7 @@ jobs:
       - name: Lint modified files
         run: |
           echo "Identifying modified files..."
-          MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
+          MODIFIED_FILES=$(git diff --name-only origin/${{ github.base_ref }} ${{ github.head_ref }} -- '*.js' '*.jsx' '*.ts' '*.tsx' '*.cjs' '*.mjs')
           echo "Modified files: $MODIFIED_FILES"
           if [ -n "$MODIFIED_FILES" ]; then
             echo "Running ESLint..."
