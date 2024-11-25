@@ -15,13 +15,13 @@ export function useLanguageMenuItems() {
     {
       label: t('polish'),
       onClick: () => {
-             changeLanguage('pl');
+        changeLanguage('pl');
       },
       icon: <PolandCircle />,
     },
     {
       label: t('english'),
-            onClick: () => {
+      onClick: () => {
         changeLanguage('en');
       },
       icon: <EnglandCircle />,
@@ -29,15 +29,12 @@ export function useLanguageMenuItems() {
   ];
 }
 
-
-
-
 function AppBarConfig() {
   return (
     <Box className="ConfigAppBar">
       {/* <DropdownMenu label={t('language')} items={languages} startIcon={<LanguageIcon />} hideLabelOnMobile /> */}
       <AppBarTimer />
-         </Box>
+    </Box>
   );
 }
 
