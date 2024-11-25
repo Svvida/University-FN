@@ -48,7 +48,7 @@ jobs:
           echo "Modified files: $MODIFIED_FILES"
           if [ -n "$MODIFIED_FILES" ]; then
             echo "Running ESLint..."
-            npx eslint --config .eslintrc.cjs $MODIFIED_FILES --format table || exit 2
+            npx eslint $MODIFIED_FILES --format table || exit 2
           else
             echo "No modified files to lint"
           fi
