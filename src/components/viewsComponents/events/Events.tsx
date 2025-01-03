@@ -15,6 +15,7 @@ import './styles/styles.scss';
 const renderContent = (eventInfo: EventContentArg) => {
   return <EventContent eventInfo={eventInfo} />;
 };
+console.log('Test');
 
 function Events() {
   const { enqueueDialog } = useDialog();
