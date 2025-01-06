@@ -11,12 +11,12 @@
     "prettier": "prettier --config .prettierrc.json src/* --write",
     "format": "eslint --fix . && prettier --config .prettierrc.json src/* --write",
     "preview": "vite preview --port 5173",
+    "jest": "jest",
+    "jest-report": "github-actions-ctrf jest-result/jest-result.json",
     "cypress-open": "cypress open",
     "cypress-run": "cypress run",
-    "cypress-run-component": "cypress run --component",
-    "cypress-report": "github-actions-ctrf cypress-result/cypress-result.json",
-    "jest": "jest",
-    "jest-report": "github-actions-ctrf jest-result/jest-result.json"
+    "cypress-run-component": "cypress run --component --browser chrome",
+    "cypress-report": "npm run cypress-run-component && github-actions-ctrf cypress-result/cypress-result.json"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
@@ -75,6 +75,7 @@
     "@typescript-eslint/parser": "^7.13.0",
     "@vitejs/plugin-react": "^4.2.1",
     "cypress": "^13.17.0",
+    "cypress-ctrf-json-reporter": "^0.0.11",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-formatter-table": "^7.32.1",
@@ -93,7 +94,6 @@
     "jest-ctrf-json-reporter": "^0.0.9",
     "prettier": "^3.2.5",
     "ts-jest": "^29.2.5",
-    "ts-loader": "^9.5.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.17.0",
     "vite": "^4.5.3",

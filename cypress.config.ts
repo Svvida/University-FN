@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress';
+import { GenerateCtrfReport } from 'cypress-ctrf-json-reporter';
 
 export default defineConfig({
   e2e: {
@@ -14,5 +15,12 @@ export default defineConfig({
     supportFile: 'cypress/component/configs/Component.ts',
     indexHtmlFile: 'cypress/component/component-index.html',
     specPattern: '**/src/**/*.cy.{js,jsx,ts,tsx}',
+    setupNodeEvents(on) {
+      new GenerateCtrfReport({
+        on,
+        outputFile: 'cypress-result.json',
+        outputDir: 'cypress-result',
+      });
+    },
   },
 });

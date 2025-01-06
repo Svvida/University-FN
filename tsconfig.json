@@ -44,8 +44,6 @@
       "types/*": ["types/*"],
       "utils/*": ["utils/*"],
     },
-    "types": ["cypress"],
-    "typeRoots": ["./node_modules/@types", "./src/types", "node_modules/cypress/types"]
   },
   "include": ["src/**/*", "cypress/**/*", "./custom.d.ts", "jest.config.js", "eslint.config.js", "cypress.config.ts", "cypress/index.d.ts"],
   "exclude": ["node_modules", "dist"],
