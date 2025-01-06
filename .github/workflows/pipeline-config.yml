@@ -121,6 +121,33 @@ jobs:
       - name: Publish Test Summary Results
         run: npm run jest-report
 
+  cypress_component:
+    name: Cypress Component Tests
+    runs-on: ubuntu-latest
+    needs: [common]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.10.0'
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Run Cypress Component Tests
+        run: npm run cypress-run-component
+
+      - name: Publish Test Summary Results
+        run: npm run cypress-report
 
   docker_build:
     name: Build docker image
